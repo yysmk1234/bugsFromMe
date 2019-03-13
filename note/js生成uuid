@@ -28,3 +28,5 @@ function uuid(len, radix) {
 
     return uuid.join('');
 }
+
+//第一个参数决定返回字符串长度，第二个参数决定字符串从几个原始串里面取，如果不传，就返回默认
