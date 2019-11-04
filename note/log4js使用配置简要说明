@@ -1,0 +1,21 @@
+## log4js 使用说明
+
+log4js可以全局配置，多文件管理写入log日志.
+全局配置configure，在`appenders`中配置要输出的log对象及对象的属性，如`type`，可以写 file ，对应的后面
+要追加 filename 属性，也就是输出的日志文件名 （其实是文件路径，可以在不同的层级写log文件 比如 '../cheese_1.log'，就会在文件的上一层出现log日志文件）
+
+configure 还有另一个属性是 categories ，这个属性必须有 default 属性规定默认的 log 层级，每个属性有 appenders 和 level 两个 属性，appenders 对应的
+是configure 中的 appenders ，最后的default 中写入所有的 appenders ，暂时还没找到为啥要这么写，但是测试代码，如果没写入的话，就没法正常写入 log 日志
+再就是log 是缺省的，有层级，如果声明的层级比输出的层级低，是没办法输出的
+
+
+层级为：
+
+trace   //最低
+debug
+info
+log
+warn
+error
+fatal
+
