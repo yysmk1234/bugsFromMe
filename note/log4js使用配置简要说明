@@ -19,3 +19,17 @@ warn
 error
 fatal
 
+log4js.configure({
+  appenders: {
+    cheeseLogs: { type: 'file', filename: 'cheese.log' },
+    console: { type: 'console' },
+    app:{ type:'file', filename: '../cheese_1.log' }
+  },
+  categories: {
+    cheese: { appenders: ['cheeseLogs'], level: 'error' },
+    another: { appenders: ['console'], level: 'trace' },
+    apps:{ appenders:['app'],level:'trace'},
+    default: { appenders: ['console', 'cheeseLogs','app'], level: 'trace' }
+    // default:{level:"trace"}
+  }
+});
