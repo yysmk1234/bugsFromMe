@@ -1,0 +1,46 @@
+let fs = require('fs');
+
+let fsModel = {};
+// let dirent = fs.Dirent;
+fsModel.getDir = ( path ) => {
+    return new Promise((resolve,reject)=>{
+        fs.readdir( path , (err, dir)=>{
+            if(err){
+                reject(err);
+            }else{
+                resolve(dir);
+            }
+        })
+    })
+}
+
+fsModel.getFolderTopologyByPath = async ( path ) => {
+    let folder = {};
+    //获取顶层文件夹目录结构
+    let rootFolder = await fsModel.getDir( path ).catch(err=>{
+        console.log("err:",err);
+    });
+    // console.log(rootFolder);
+    
+    for(let x of rootFolder){
+        let fileState = fs.lstatSync(path + '/' + x);
+        if(fileState.isDirectory()){
+            //如果子目录是文件夹
+            folder[x] = await fsModel.getFolderTopologyByPath(path + '/' + x)
+        }else{
+            //如果子目录不是文件夹
+            folder[x] = 'file'
+        }
+    }
+    return folder;
+}
+
+async function test () {
+    let a = await fsModel.getFolderTopologyByPath('D:\\工具软件\\PicPick');
+    console.log("a:",a);
+}
+
+test()
+
+
+module.exports = fsModel;
