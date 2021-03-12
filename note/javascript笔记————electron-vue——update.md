@@ -4,10 +4,10 @@
   需要在主程序中重写
   
     mainWindow = new BrowserWindow({
-    height: 563,
-    useContentSize: true,
-    width: 1000,
-    webPreferences:{
-      nodeIntegration:true
-    }
-  })
+      height: 563,
+      useContentSize: true,
+      width: 1000,
+      webPreferences:{
+        nodeIntegration:true
+      }
+    })
