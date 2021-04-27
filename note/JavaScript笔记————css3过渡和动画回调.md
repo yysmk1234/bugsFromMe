@@ -11,9 +11,9 @@ css过渡和动画通常来说是可以直接用css处理，但是，会有一�
 ### 2.js事件
   js提供了两个相关事件来解决css过渡和动画的回调问题。即transtionend 和 animationend。
   
-  `
+  ```
   document.getElementById("myDIV").addEventListener("transitionend", myFunction); //myFunction即为动画回调函数
   
   document.getElementById("myDIV").addEventListener("animationend", myFunction); //myFunction即为回调函数
-  `
+  ```
   
